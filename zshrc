@@ -549,6 +549,7 @@ export FWD_HOME="$HOME/git/fwd-lohika"
 export FWD_CONFIG="$HOME/git/forward"
 export FWD_JSON="$FWD_CONFIG/fwd-config.json"
 export FWD_SETTINGS="$HOME/.fwd"
+export FWD_PCAP_DIR="$FWD_SETTINGS/pcap"
 
 zmodload -i zsh/complist
 
