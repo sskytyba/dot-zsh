@@ -17,7 +17,7 @@ export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 # export ELLIPSIS_HOME=${HOME}/ellipsis.home
 # export ELLIPSIS_PACKAGES=${HOME}/ellipsis/packages
 export ELLIPSIS_PROTO=git
-export PATH=/bin:/sbin:${PATH}:~/.ellipsis/bin
+export PATH=${PATH}:~/.ellipsis/bin:/bin:/sbin
 fpath=($HOME/.ellipsis/comp $fpath)
 autoload -U compinit; compinit
 
@@ -71,6 +71,42 @@ if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR=/tmp/$LOGNAME
   mkdir -p -m 700 "$TMPDIR"
 fi
+
+# function rm () {
+#   local path
+#   for path in "$@"; do
+#     # ignore any arguments
+#     if [[ "$path" = -* ]]; then :
+#     else
+#       local dst=${path##*/}
+#       # append the time if necessary
+#       while [ -e ~/.Trash/"$dst" ]; do
+#         dst="$dst "$(/bin/date +%H-%M-%S)
+#       done
+#       /bin/mv "$path" "~/.Trash/$dst"
+#     fi
+#   done
+# }
+
+function rm() {
+  if [ -d ~/.trash ]; then
+    local DATE=`date "+%y%m%d-%H%M%S"`
+    mkdir ~/.trash/$DATE 2> /dev/null
+    for j in $@; do
+      # skip -
+      if [ $j[1,1] != "-" ]; then
+        if [ -e $j ]; then
+          #echo "mv $j ~/.trash/$DATE/"
+          mv $j ~/.trash/$DATE/
+        else
+          echo "$j : not found"
+        fi
+      fi
+    done
+  else
+    command rm $@
+  fi
+}
 
 export TMPPREFIX=${TMPDIR%/}/zsh
 
@@ -186,42 +222,6 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
-
-# function rm () {
-#   local path
-#   for path in "$@"; do
-#     # ignore any arguments
-#     if [[ "$path" = -* ]]; then :
-#     else
-#       local dst=${path##*/}
-#       # append the time if necessary
-#       while [ -e ~/.Trash/"$dst" ]; do
-#         dst="$dst "$(/bin/date +%H-%M-%S)
-#       done
-#       /bin/mv "$path" "~/.Trash/$dst"
-#     fi
-#   done
-# }
-
-function rm() {
-  if [ -d ~/.trash ]; then
-    local DATE=`date "+%y%m%d-%H%M%S"`
-    mkdir ~/.trash/$DATE 2> /dev/null
-    for j in $@; do
-      # skip -
-      if [ $j[1,1] != "-" ]; then
-        if [ -e $j ]; then
-          #echo "mv $j ~/.trash/$DATE/"
-          mv $j ~/.trash/$DATE/
-        else
-          echo "$j : not found"
-        fi
-      fi
-    done
-  else
-    command rm $@
-  fi
-}
 
 # Ssh agent
 if [ -f ~/.agent.env ] ; then

@@ -18,7 +18,11 @@ pkg.install() {
 			linux
 			;;
 	esac
-	chsh -u $USER -s `which zsh`
+	if zsh_loc="$(type -p /usr/local/bin/zsh)" && [ -z "$zsh_loc" ]; then
+  	chsh -u $USER -s `/usr/local/bin/zsh`
+	else
+		chsh -u $USER -s `which zsh`
+	fi
 }
 
 ##############################################################################
@@ -32,10 +36,18 @@ pkg.unlink() {
 ##############################################################################
 
 osx() {
-	brew install zsh
-	brew install fortune
-	sudo gem install lolcat
-	brew install peco
+	if ! zsh_loc="$(type -p zsh)" || [ -z "$zsh_loc" ]; then
+  	brew install zsh
+	fi
+	if ! fortune_loc="$(type -p fortune)" || [ -z "$fortune_loc" ]; then
+  	brew install fortune
+	fi
+	if ! peco_loc="$(type -p peco)" || [ -z "$peco_loc" ]; then
+  	brew install peco
+	fi
+	if ! lolcat_loc="$(type -p lolcat)" || [ -z "$lolcat_loc" ]; then
+  	sudo gem install lolcat
+	fi
 }
 
 ##############################################################################
