@@ -72,9 +72,10 @@ if [[ ! -d "$TMPDIR" ]]; then
   mkdir -p -m 700 "$TMPDIR"
 fi
 
-# function rm () {
+# function trash () {
 #   local path
 #   for path in "$@"; do
+#     # skip -
 #     # ignore any arguments
 #     if [[ "$path" = -* ]]; then :
 #     else
@@ -88,7 +89,7 @@ fi
 #   done
 # }
 
-function rm() {
+function trash() {
   if [ -d ~/.trash ]; then
     local DATE=`date "+%y%m%d-%H%M%S"`
     mkdir ~/.trash/$DATE 2> /dev/null
@@ -196,7 +197,7 @@ setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event i
 setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-unsetopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+unsetopt HIST_VERIFY             # Do not execute immediately upon history expansion.
 export HISTIGNORE="j *:v *:vim:&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g:* --help"
 
 # Colored grep
@@ -303,6 +304,7 @@ if (( $+commands[fasd] )) ; then
 fi
 
 # aliases
+alias rm='trash'
 alias vi='vim'
 alias history='fc -l 1'
 alias md='mkdir -p'
