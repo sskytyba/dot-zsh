@@ -46,7 +46,7 @@ osx() {
   	brew install peco
 	fi
 	if ! lolcat_loc="$(type -p lolcat)" || [ -z "$lolcat_loc" ]; then
-  	sudo gem install lolcat
+  	gem install lolcat
 	fi
 }
 
