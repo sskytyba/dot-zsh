@@ -2,7 +2,8 @@ export __OS__=$(uname)
 
 # gem
 export GEM_HOME=${HOME}/.gem
-export GEM_PATH=${GEM_HOME}
+export GEM_PATH=${GEM_HOME}/bin
+export PATH=${PATH}:$GEM_PATH
 
 if [ $__OS__ = "Darwin" ] && [ -f /usr/libexec/java_home ] ; then
   # java
@@ -306,6 +307,8 @@ fi
 # aliases
 alias rm='trash'
 alias vi='vim'
+alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
+alias cls='clear'
 alias history='fc -l 1'
 alias md='mkdir -p'
 alias pgrep="pgrep -f"
@@ -322,7 +325,7 @@ alias ls='ls -G'
 alias less='less -R'
 alias diff='colordiff -u'
 alias cls="clear"
-alias tmx='if [ -z "$TMUX" ]; then; tmux attach || tmux new ; fi'
+alias tmx='tmux attach'
 alias agg='ag -g'
 alias top='htop'
 # opening ports
@@ -669,6 +672,6 @@ function colours() {
     done
 }
 
-[[ $SHLVL != "2" ]] && tmux new
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#[[ $SHLVL != "2" ]] && tmux attach
