@@ -9,7 +9,6 @@ if [ $__OS__ = "Darwin" ] && [ -f /usr/libexec/java_home ] ; then
   # java
   export JAVA_HOME=$(/usr/libexec/java_home)
 else
-
 fi
 
 export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
@@ -18,7 +17,7 @@ export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 # export ELLIPSIS_HOME=${HOME}/ellipsis.home
 # export ELLIPSIS_PACKAGES=${HOME}/ellipsis/packages
 export ELLIPSIS_USER="kulynyak"
-export ELLIPSIS_PROTO="ssh"
+export ELLIPSIS_PROTO="git"
 export PATH=${PATH}:~/.ellipsis/bin:/bin:/sbin
 fpath=($HOME/.ellipsis/comp $fpath)
 autoload -U compinit; compinit
@@ -305,7 +304,7 @@ if (( $+commands[fasd] )) ; then
   alias v='f -t -e vim -b viminfo'
 fi
 
-# aliases
+# aliases definition
 alias rm='trash'
 alias vi='vim'
 alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
