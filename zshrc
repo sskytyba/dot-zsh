@@ -38,8 +38,8 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='atom'
 export PAGER='less'
 
 ##
@@ -306,6 +306,7 @@ fi
 
 # aliases definition
 alias rm='trash'
+alias vim='nvim'
 alias vi='vim'
 alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
 alias cls='clear'
@@ -342,6 +343,8 @@ alias zreload='exec zsh'
 alias of='open .'
 alias c='lolcat'
 alias h='head'
+alias npms='npm start -- --reset cache .'
+alias redshift="killall redshift;redshift -t 5800:5100 -l 49:32 -g 0.95 -b .95>/dev/null 2>&1 &"
 if [ "$__OS__" = "Darwin" ]; then
   # Show/Hide Hidden Files mac OS X
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'

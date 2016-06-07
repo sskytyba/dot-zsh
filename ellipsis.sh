@@ -48,6 +48,9 @@ osx() {
 	if ! lolcat_loc="$(type -p lolcat)" || [ -z "$lolcat_loc" ]; then
   	gem install lolcat
 	fi
+  if ! redshift="$(type -p redshift)" || [ -z "$redshift" ]; then
+  	brew install redshift
+	fi
 }
 
 ##############################################################################
