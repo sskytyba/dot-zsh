@@ -39,7 +39,7 @@ fi
 #
 
 export EDITOR='nvim'
-export VISUAL='atom'
+export VISUAL='mvim'
 export PAGER='less'
 
 ##
