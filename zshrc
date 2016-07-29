@@ -1,5 +1,5 @@
 export __OS__=$(uname)
-
+export HOMEBREW_GITHUB_API_TOKEN="702e4036b6b571219972d716d5d7debb964873c5"
 # gem
 export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}/bin
@@ -38,7 +38,7 @@ fi
 # Editors
 #
 
-export EDITOR='nvim'
+export EDITOR='mvim'
 export VISUAL='mvim'
 export PAGER='less'
 
@@ -306,8 +306,8 @@ fi
 
 # aliases definition
 alias rm='trash'
-alias vim='nvim'
-alias vi='vim'
+alias vim='mvim'
+alias vi='command vim'
 alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
 alias cls='clear'
 alias history='fc -l 1'
@@ -678,3 +678,5 @@ function colours() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #[[ $SHLVL != "2" ]] && tmux attach
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
