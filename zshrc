@@ -1,5 +1,8 @@
 export __OS__=$(uname)
-export HOMEBREW_GITHUB_API_TOKEN="702e4036b6b571219972d716d5d7debb964873c5"
+
+if [ -f "${HOME}/.profile" ] ; then
+  source ${HOME}/.profile
+fi
 # gem
 export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}/bin
@@ -38,8 +41,8 @@ fi
 # Editors
 #
 
-export EDITOR='mvim'
-export VISUAL='mvim'
+export EDITOR='vim'
+export VISUAL='atom'
 export PAGER='less'
 
 ##
@@ -306,7 +309,7 @@ fi
 
 # aliases definition
 alias rm='trash'
-alias vim='mvim'
+# alias vim='mvim'
 alias vi='command vim'
 alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
 alias cls='clear'
@@ -326,7 +329,7 @@ alias ls='ls -G'
 alias less='less -R'
 alias diff='colordiff -u'
 alias cls="clear"
-alias tmx='tmux attach'
+alias tmx='tmux attach || tmux new'
 alias agg='ag -g'
 alias top='htop'
 # opening ports
@@ -346,6 +349,7 @@ alias h='head'
 alias npms='npm start -- --reset cache .'
 alias redshift="killall redshift;redshift -t 5800:5100 -l 49:32 -g 0.95 -b .95>/dev/null 2>&1 &"
 if [ "$__OS__" = "Darwin" ]; then
+  alias ssh='ssh -oKexAlgorithms=+diffie-hellman-group1-sha1'
   # Show/Hide Hidden Files mac OS X
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
   alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -514,7 +518,7 @@ function up() {
   brew cleanup
   brew prune
   brew cask cleanup
-  ls -l /usr/local/Library/Formula | grep homebrew-cask | awk '{print $9}' | for evil_symlink in $(cat -); do rm -v /usr/local/Library/Formula/$evil_symlink; done
+  ls -l /usr/local/Homebrew/Library/Homebrew | grep homebrew-cask | awk '{print $9}' | for evil_symlink in $(cat -); do rm -v /usr/local/Homebrew/Library/Homebrew/$evil_symlink; done
   brew doctor
 }
 
@@ -680,3 +684,6 @@ function colours() {
 #[[ $SHLVL != "2" ]] && tmux attach
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# fix for tmux on macOS Sierra
+export EVENT_NOKQUEUE=1
