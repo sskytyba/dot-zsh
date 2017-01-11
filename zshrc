@@ -369,6 +369,9 @@ if [ "$__OS__" = "Darwin" ]; then
   alias caskl='brew cask list'
   alias casks='brew cask search'
   alias caskx='brew cask uninstall'
+  # MELD
+  alias meld='open -a Meld --args'
+  alias meldw='open -W -a Meld --args'
   # OPEN FILE
   alias -s html=open
   alias -s pdf=open
