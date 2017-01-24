@@ -42,7 +42,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='atom'
+export VISUAL='subl'
 export PAGER='less'
 
 ##
