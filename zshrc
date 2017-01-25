@@ -130,9 +130,6 @@ antigen use oh-my-zsh
 antigen bundle compleat
 antigen bundle mvn
 
-antigen bundle ~/git/forward.zsh --no-local-clone
-antigen bundle ~/git/ra-git.zsh --no-local-clone
-
 antigen theme gnzh
 #antigen theme https://gist.github.com/3750104.git agnoster
 
@@ -311,7 +308,6 @@ fi
 alias rm='trash'
 # alias vim='mvim'
 alias vi='command vim'
-alias clear='pushd $FWD_HOME; git remote rm int; popd; command clear'
 alias cls='clear'
 alias history='fc -l 1'
 alias md='mkdir -p'
@@ -563,6 +559,11 @@ export FWD_CONFIG="$HOME/git/forward"
 export FWD_JSON="$FWD_CONFIG/fwd-config.json"
 export FWD_SETTINGS="$HOME/.fwd"
 export FWD_PCAP_DIR="$FWD_SETTINGS/pcap"
+alias glear='pushd $FWD_HOME; git remote rm lohika; popd; command clear'
+antigen bundle ~/git/forward.zsh --no-local-clone
+antigen bundle ~/git/ra-git.zsh --no-local-clone
+antigen apply
+
 
 zmodload -i zsh/complist
 
