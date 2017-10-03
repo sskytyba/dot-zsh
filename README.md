@@ -7,7 +7,7 @@ This zsh config is available as [Ellipsis][Ellipsis] package.
 
 #### Ellipsis
 ``` shell
-    ellipsis install kulynyak/dot-zsh
+    ellipsis install sskytyba/dot-zsh
 ```
 
 ## Maintain
