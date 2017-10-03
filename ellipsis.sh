@@ -19,7 +19,7 @@ pkg.install() {
 			;;
 	esac
 	if zsh_loc="$(type -p /usr/local/bin/zsh)" && [ -z "$zsh_loc" ]; then
-  	chsh -u $USER -s `/usr/local/bin/zsh`
+	  	chsh -u $USER -s `/usr/local/bin/zsh`
 	else
 		chsh -u $USER -s `which zsh`
 	fi
@@ -48,7 +48,7 @@ osx() {
 	if ! lolcat_loc="$(type -p lolcat)" || [ -z "$lolcat_loc" ]; then
   	gem install lolcat
 	fi
-  if ! redshift="$(type -p redshift)" || [ -z "$redshift" ]; then
+  	if ! redshift="$(type -p redshift)" || [ -z "$redshift" ]; then
   	brew install redshift
 	fi
 }
