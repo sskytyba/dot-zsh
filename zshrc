@@ -116,7 +116,7 @@ function trash() {
 export TMPPREFIX=${TMPDIR%/}/zsh
 
 # antigen
-source ~/.antigen/antigen.zsh || { cd ~ && git clone git@github.com:zsh-users/antigen.git ~/.antigen && source ~/.antigen/antigen.zsh }
+source /usr/local/share/antigen/antigen.zsh || { brew install antigen && source /usr/local/share/antigen/antigen.zsh }
 
 # plugins
 antigen bundle zsh-users/zsh-syntax-highlighting
