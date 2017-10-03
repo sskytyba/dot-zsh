@@ -552,7 +552,7 @@ function expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
-source /usr/local/opt/fzf/shell/key-bindings.zsh
+#source /usr/local/opt/fzf/shell/key-bindings.zsh
 
 # forward plugin
 export FWD_HOME="$HOME/git/fwd-lohika"
