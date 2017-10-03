@@ -19,7 +19,7 @@ export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 # ellipsis
 # export ELLIPSIS_HOME=${HOME}/ellipsis.home
 # export ELLIPSIS_PACKAGES=${HOME}/ellipsis/packages
-export ELLIPSIS_USER="kulynyak"
+export ELLIPSIS_USER="sskytyba"
 export ELLIPSIS_PROTO="git"
 export PATH=${PATH}:~/.ellipsis/bin:/bin:/sbin
 fpath=($HOME/.ellipsis/comp $fpath)
