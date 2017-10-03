@@ -42,7 +42,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='subl'
+export VISUAL='vim'
 export PAGER='less'
 
 ##
@@ -299,7 +299,7 @@ if (( $+commands[fasd] )) ; then
   # show / search / select
   alias s='fasd -si'
   # quick opening files with vim
-  # alias v='sf -e vim'
+  alias v='sf -e vim'
   # quick opening files with vim
   alias v='f -t -e vim -b viminfo'
 fi
@@ -345,7 +345,8 @@ alias h='head'
 alias npms='npm start -- --reset cache .'
 alias redshift="killall redshift;redshift -t 5800:5100 -l 49:32 -g 0.95 -b .95>/dev/null 2>&1 &"
 if [ "$__OS__" = "Darwin" ]; then
-  alias ssh='ssh -oKexAlgorithms=+diffie-hellman-group1-sha1'
+  # alias ssh='ssh -oKexAlgorithms=+diffie-hellman-group1-sha1'
+  alias ossh='/usr/bin/ssh'
   # Show/Hide Hidden Files mac OS X
   alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
   alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -691,3 +692,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # fix for tmux on macOS Sierra
 export EVENT_NOKQUEUE=1
+export PATH="/usr/local/opt/protobuf@2.6/bin:$PATH"
+
+export FIREBIRD_HOME=/Library/Frameworks/Firebird.framework/Resources
+export PATH=$PATH:$FIREBIRD_HOME/bin
